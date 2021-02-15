@@ -6,9 +6,9 @@
 <body>
 	<h1>Login Page</h1>
 
-	@CSRF
+	
 		<form action="login" method="POST">
-    
+    @csrf
 		<fieldset>
 			<legend>Login</legend>
 			<table>
@@ -31,5 +31,6 @@
 		</fieldset>
 	
 	</form>
+	{{ session('msg') }}
 </body>
 </html>
