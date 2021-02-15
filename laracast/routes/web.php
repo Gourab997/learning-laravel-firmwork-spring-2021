@@ -16,11 +16,13 @@ use App\Http\Controllers\LogoutController;
 |
 */
 Route::get("login",[LoginController::class,'index']);
-//Route::get('/login','LoginController@index' );
-
-Route::group(['middleware'=>'sess'],function () {
+    //Route::get('/login','LoginController@index' );
     Route::post("login",[LoginController::class,'verify']);
 
+
+Route::group(['middleware'=>'sess'],function () {
+ 
+    
 Route::get("home",[HomeController::class,'index']);
 Route::get("home/userlist",[HomeController::class,'userlist']);
 
