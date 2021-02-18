@@ -15,20 +15,25 @@
     <table border="1">
     <tr>
         <td>ID</td>
+        <td>Username</td>
         <td>Name</td>
         <td>Email</td>
         <td>Password</td>
+        <td>Type</td>
         <td> Action</td>
     </tr>
     @for($i=0; $i< count($userlist); $i++)
     <tr>
-        <td>{{ $userlist[$i]['id'] }}</td>
+        <td>{{ $userlist[$i]['u_id'] }}</td>
+        <td>{{ $userlist[$i]['username'] }}</td>
         <td>{{ $userlist[$i]['name'] }}</td>
         <td>{{ $userlist[$i]['email'] }}</td>
         <td>{{ $userlist[$i]['password'] }}</td>
+        <td>{{ $userlist[$i]['type'] }}</td>
         <td>
-            <a href="/home/edit/{{ $userlist[$i]['id'] }}"> Edit</a>
-            <a href=""> Delete</a>
+            <a href="/home/edit/{{ $userlist[$i]['u_id'] }}"> Edit</a>
+            <a href="/home/delete/{{ $userlist[$i]['u_id'] }}"> Delete</a>
+            <a href="/home/details/{{ $userlist[$i]['u_id'] }}"> Details</a>
         </td>
     </tr>
     @endfor

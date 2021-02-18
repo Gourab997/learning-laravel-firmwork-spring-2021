@@ -13,19 +13,33 @@
                 <legend>Create User</legend>
                 <table>
                     <tr>
-                        <td>Username</td>
-                        <td><input type="text" name="username"></td>
+                        <td>username</td>
+                        <td><input type="text" name="username" value=""></td>
+                </tr>
+                    <tr>
+                        <td>name</td>
+                        <td><input type="text" name="name" value=""></td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="password"></td>
+                        <td><input type="password" name="password" value=""></td>
                     </tr>
                     <tr>
                         <td>Email</td>
-                        <td><input type="email" name="email"></td>
+                        <td><input type="email" name="email" value=""></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" name="submit" value="Save"></td>
+                        <td>Type</td>
+                        <td>
+                            <select name="type">
+                                <option value="admin"> Admin </option>
+                                <option value="user"> User</option> 
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="submit" name="submit" value="submit"></td>
                        
                     </tr>
                 </table>

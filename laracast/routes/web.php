@@ -32,5 +32,10 @@ Route::post("home/create",[HomeController::class,'store']);
 Route::get("home/edit/{id}",[HomeController::class,'edit'])->middleware('sess');
 Route::post("home/edit/{id}",[HomeController::class,'update']);
 
+
+Route::get("home/delete/{id}",[HomeController::class,'delete']);
+Route::post("home/delete/{id}",[HomeController::class,'destroy']);
+Route::get("home/details/{id}",[HomeController::class,'show']);
+
 Route::get("logout",[LogoutController::class,'index']);
 });

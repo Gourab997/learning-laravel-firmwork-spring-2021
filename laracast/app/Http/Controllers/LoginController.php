@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 
@@ -17,16 +17,21 @@ return view('login.index');
 
   public  function verify(Request $req){
 
-     $user =User::where('password', $req->password)
+     /* $user =User::where('password', $req->password)
                  ->where('username',$req->username)
-              ->get(); 
+              ->get(); */ 
      // return view('login.test');
 
+     $user = DB::table('users') 
+     -> where('password', $req->password)
+     ->where('username',$req->username)
+     ->get();
        if($req->username == "" || $req->password == ""){
           $req->session()->flash('msg','Invalid');
           return redirect('/login');
        }elseif(count($user) > 0 ){
-      //echo "valid user";
+      
+         //echo "valid user";
  
      
 // // $req->session()->get('name');

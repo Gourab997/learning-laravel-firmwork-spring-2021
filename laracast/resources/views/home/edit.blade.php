@@ -7,14 +7,18 @@
     <title>Create User</title>
 </head>
 <body>
-    <form action="create" method="POST">
+    <form action="" method="POST">
         @csrf
             <fieldset>
-                <legend>Edit User {{ $user['id'] }}</legend>
+                <legend>Edit User {{ $user['u_id'] }}</legend>
                 <table>
                     <tr>
+                        <td>username</td>
+                        <td><input type="text" name="username" value="{{ $user['username'] }}"></td>
+                    </tr>
+                    <tr>
                         <td>name</td>
-                        <td><input type="text" name="username" value="{{ $user['name'] }}"></td>
+                        <td><input type="text" name="name" value="{{ $user['name'] }}"></td>
                     </tr>
                     <tr>
                         <td>Password</td>
@@ -25,7 +29,17 @@
                         <td><input type="email" name="email" value="{{ $user['email'] }}"></td>
                     </tr>
                     <tr>
-                        <td><input type="submit" name="submit" value="update"></td>
+                        <td>Type</td>
+                        <td>
+                            <select name="type">
+                                <option value="admin" @if($user['type'] == 'admin') selected @endif> Admin </option>
+                                <option value="user" @if($user['type'] == 'user') selected @endif> User</option> 
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="submit" name="update" value="update"></td>
                        
                     </tr>
                 </table>

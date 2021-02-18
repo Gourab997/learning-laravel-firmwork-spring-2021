@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class HomeController extends Controller
 {
     public function index(Request $req){
@@ -28,35 +28,69 @@ $name="g";
 
 public function store(Request $req){
 
-   
+   $user = new User();
+   $user->username = $req->username;
+   $user->name     = $req->name;
+   $user->password = $req->password;
+   $user->email    = $req->email;
+   $user->type     = $req->type;
+
+   $user->save();
     return redirect('/home/userlist');
-    echo $req->username;
+   
 }
 
 public function edit($id,Request $req){
-$userlist = $this->getUserlist();
-$user =[];
-foreach($userlist as $u){
+
+$user =User::find($id);
+/* foreach($userlist as $u){
      if($u['id'] == $id){
          $user = $u;
          break;
      }
-}
+} */
 
     return view('home.edit')->with('user',$user);
 }
 
+
+
+public function show($id){
+    //$i=$id-1;
+    $user =User::find($id);
+    return view('home.details')->with('user', $user);
+}
+
+
+
+
+
+
+
+
+
 public function update($id,Request $req){
-    $user = ['id'=> $id, 'name'=>$req->name, 'email'=>$req->email, 'password'=>$req->passwrod  ];
+    //$user = ['id'=> $id, 'name'=>$req->name, 'email'=>$req->email, 'password'=>$req->passwrod  ];
+    
+    $user = User::find($id);
+    $user->username = $req->username;
+    $user->name     = $req->name;
+    $user->password = $req->password;
+    $user->email    = $req->email;
+    $user->type     = $req->type;
+    $user->save();
+    
     return redirect('/home/userlist');
 
 }
 public function userlist(){
-    $userlist =$this->getUserlist();
+
+    $userlist = User::all();
+    //$userlist =$this->getUserlist();
     return view('home.list')->with('userlist',$userlist);
 }
 
-    public function getUserlist(){
+   /*  public function getUserlist(){
 
         return  [
            ['id'=>1 , 'name' => 'Gourab', 'email' => 'ads@gmail.com' , 'password' => '123' ],
@@ -66,5 +100,21 @@ public function userlist(){
 
 
       
+    } */
+
+    public function delete($id){
+        $user = User::find($id);
+
+        return view('home.delete')->with('user',$user);
     }
+
+    public function destroy($id){
+
+        if(User::destroy($id)){
+            return redirect('/home/userlist');
+        } else{
+            return redirect('home/delete/'.$id);
+        }
+    }
+
 }
