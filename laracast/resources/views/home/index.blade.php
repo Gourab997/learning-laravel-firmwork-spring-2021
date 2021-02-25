@@ -9,7 +9,7 @@
 <body>
     <h1> welcome home {{ session('username')}}</h1>
     <a href="/home/create"> Create user</a>
-    <a href="/home/userlist"> View user list</a>
+    <a href="{{ route('home.userlist') }}"> View user list</a>
     <a href="/logout"> logout</a>
 </body>
 </html>

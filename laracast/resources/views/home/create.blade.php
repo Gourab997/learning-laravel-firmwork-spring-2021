@@ -14,7 +14,11 @@
                 <table>
                     <tr>
                         <td>username</td>
-                        <td><input type="text" name="username" value=""></td>
+                        <td><input type="text" name="username" value="{{ old('username') }}">
+                        <span style="color:red"> @error('username')
+                            {{ $message }}
+                        @enderror</span>
+                    </td>
                 </tr>
                     <tr>
                         <td>name</td>
@@ -22,7 +26,10 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="password" value=""></td>
+                        <td><input type="password" name="password" value="{{ old('password') }}">
+                            <span style="color:red"> @error('password')
+                                {{ $message }}
+                            @enderror</span></td>
                     </tr>
                     <tr>
                         <td>Email</td>
@@ -46,5 +53,9 @@
             </fieldset>
         
         </form> 
+{{-- @foreach ($errors->all() as $err)
+<li>{{ $err }} </li>    
+@endforeach --}}
+
 </body>
 </html>
