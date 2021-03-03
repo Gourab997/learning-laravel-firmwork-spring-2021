@@ -15,7 +15,7 @@
                     <tr>
                         <td>username</td>
                         <td><input type="text" name="username" value="{{ old('username') }}">
-                        <span style="color:red"> @error('username')
+                        <span style="color:rgba(158, 152, 219, 0.267)"> @error('username')
                             {{ $message }}
                         @enderror</span>
                     </td>
@@ -27,7 +27,7 @@
                     <tr>
                         <td>Password</td>
                         <td><input type="password" name="password" value="{{ old('password') }}">
-                            <span style="color:red"> @error('password')
+                            <span style="color:rgba(86, 89, 240, 0.863)"> @error('password')
                                 {{ $message }}
                             @enderror</span></td>
                     </tr>
@@ -39,7 +39,7 @@
                         <td>Type</td>
                         <td>
                             <select name="type">
-                                <option value="admin"> Admin </option>
+                                <option value="admin" style="color:rgba(64, 189, 238, 0.863)"> Admin </option>
                                 <option value="user"> User</option> 
                             </select>
                         </td>
