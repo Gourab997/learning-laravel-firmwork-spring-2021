@@ -62,9 +62,9 @@ Route::get("pdf",[DynamicPDFController::class,'index']);
 Route::get("pdf",[DynamicPDFController::class,'pdf']);
 });
 
-Route::get("system/product_management/",[ProductController::class,'index']);
-Route::get("pdf",[DynamicPDFController::class,'pdf']);
-Route::get("pdf",[DynamicPDFController::class,'pdf']);
+Route::get("system/product_management/existing_products",[ProductController::class,'existing_products']);
+Route::get("system/product_management/upcoming_prroducts",[ProductController::class,'upcoming_products']);
+Route::get("system/prroduct_management/add_product",[ProductController::class,'add_product']);
 
 
 

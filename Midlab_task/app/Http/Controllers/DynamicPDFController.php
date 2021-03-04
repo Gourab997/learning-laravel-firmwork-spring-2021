@@ -24,7 +24,7 @@ class DynamicPDFController extends Controller
 
     function pdf()
     {
-     $pdf = \App::make('dompdf.wrapper');
+     $pdf = App::make('dompdf.wrapper');
      $pdf->loadHTML($this->convert_sales_data_to_html());
      return $pdf->stream();
     }
