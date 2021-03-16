@@ -67,8 +67,23 @@ Route::get("system/product_management/upcoming_prroducts",[ProductController::cl
 Route::get("system/prroduct_management/add_product",[ProductController::class,'add_product']);
 
 
+Route::get('/admin',[LoginController::class,'superAdminDashboard'])->name('superadmin.dashboard');
+Route::get('/customer',[LoginController::class,'customerDashboard'])->name('admin.dashboard');
+Route::get('/accountant',[LoginController::class,'accountantDashboard'])->name('author.dashboard');
+Route::get('/salesman',[LoginController::class,'salesmanDashboard'])->name('user.salesman');
+Route::get('/businesspartner',[LoginController::class,'businesspartnerDashboard'])->name('businesspartner.dashboard');
+Route::get('/vendor',[LoginController::class,'vendorDashboard'])->name('vendor.dashboard');
+});
 
 
 
 
+  //upcoming
 
+  Route::get('/upcoming_products/edit/{id}', [ProductController::class,'editUpcomingProduct'])->name('upcomingproduct.edit');
+  Route::post('/upcoming_products/update', [ProductController::class,'updateUpcomingProduct'])->name('product.updateProducts');
+
+  Route::get('/upcoming_products/delete/{id}', [ProductController::class,'deleteUpcomingProduct'])->name('upcomingproduct.delete');
+  Route::post('/upcoming_products/deleted/{id}', [ProductController::class,'deletedUpcomingProduct'])->name('upcomingproduct.deleted');
+  
+  Route::get('/product/{product_id}', [ProductController::class,'DetailsUpcomingProduct'])->name('upcomingproduct.details');

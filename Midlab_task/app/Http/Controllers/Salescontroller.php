@@ -104,32 +104,32 @@ public function physicalStore()
 
     public function uploadData()
     {
-        return \view('superadmin.physicalStore.upload');
+        return \view('sales.upload');
     }
 
     public function salesLogDetails()
     {
         $physicalStore = Physical_store_channel::where('status','=','sold')->get();
-        return view('superadmin.physicalStore.salesLog')->with('Physicalstore', $physicalStore);
+        return view('sales.salesLog')->with('Physicalstore', $physicalStore);
     }
 
     public function soldlog()
     {
         $physicalStore = Physical_store_channel::all();
-        return view('superadmin.soldtable')->with('store', $physicalStore);
+        return view('sales.soldtable')->with('store', $physicalStore);
     }
     public function download()
     {
         $data = Physical_store_channel::all();
         view()->share('Sales', $data);
-        $pdf =  Pdf::loadView('superadmin.pdf_share', $data);
+        $pdf =  Pdf::loadView('sales.pdf_share', $data);
         return $pdf->download('pdf_file.pdf');
     }
     public function downloadSoldProduct()
     {
         $data = Physical_store_channel::where('status','=','sold')->get();
         view()->share('Sales', $data);
-        $pdf = PDF::loadView('superadmin.pdf_sold_product', $data);
+        $pdf = PDF::loadView('sales.pdf_sold_product', $data);
         return $pdf->download('pdf_sold_file.pdf');
     }
 
@@ -137,7 +137,7 @@ public function physicalStore()
     {
         $data = Physical_store_channel::where('status','=','unsold')->get();
         view()->share('Sales', $data);
-        $pdf = PDF::loadView('superadmin.pdf_pending_product', $data);
+        $pdf = PDF::loadView('sales.pdf_pending_product', $data);
         return $pdf->download('pdf_pending_file.pdf');
     }
 }
